@@ -44,7 +44,8 @@
             type (.getType b)]
         (cond
           (= type Material/STONE) (.setType b Material/COBBLESTONE)
-          (= type Material/COBBLESTONE) (.setType b Material/AIR))))))
+          (= type Material/COBBLESTONE) (.setType b Material/AIR)))))
+  (.setCancelled evt true))
 
 (defn entity-damage-event [evt]
   (let [target (.getEntity evt)
