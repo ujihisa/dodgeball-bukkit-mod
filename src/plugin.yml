@@ -1,0 +1,6 @@
+name: dodgeball
+main: dodgeball.ClojurePlugin
+version: 2.0.0
+website: http://ujihisa.blogspot.com
+author: Tatsuhiro Ujihisa
+description: dodgeball
