@@ -23,10 +23,10 @@
           world (.getWorld location)
           velocity (.getVelocity entity)
           direction (.multiply (.clone velocity) (double (/ 1 (.length velocity))))
-          block (.getBlock (.add (.clone location) direction))
-          type (.getType block)]
+          block (.getBlock (.add (.clone location) direction))]
       (doseq [[x z] [[-1 0] [0 -1] [1 0] [0 1] [0 0]]]
-        (let [b (.getBlock (.add (.clone (.getLocation block)) x 0 z))]
+        (let [b (.getBlock (.add (.clone (.getLocation block)) x 0 z))
+              type (.getType b)]
           (cond
             (= type Material/STONE) (.setType b Material/COBBLESTONE)
             (= type Material/COBBLESTONE) (.setType b Material/AIR))))
@@ -39,7 +39,7 @@
 
 (defn arrow-damages-entity-event [evt attacker target]
   (let [loc (.add (.clone (.getLocation target)) 0 -1 0)]
-    (doseq [[x z] (vec (concat (map (fn [i] [i 0]) (range -2 3)) (map (fn [i] [0 i]) (range -2 3))))]
+    (doseq [x [-1 0 1] z [-1 0 1]]
       (let [b (.getBlock (.add (.clone loc) x 0 z))
             type (.getType b)]
         (cond
